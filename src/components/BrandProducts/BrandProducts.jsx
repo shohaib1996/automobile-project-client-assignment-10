@@ -1,10 +1,21 @@
 import { useLoaderData } from "react-router-dom";
 import Navbar from "../../Shared/Navbar/Navbar";
+import { useEffect, useState } from "react";
+import BrandCarCards from "../BrandCarCards/BrandCarCards";
 
 
 const BrandProducts = () => {
     const brand = useLoaderData()
+    const [brandProducts, setBrandProducts] = useState([])
     console.log(brand);
+    useEffect(()=> {
+        fetch(`http://localhost:5000/brand`)
+        .then(res => res.json())
+        .then(data => setBrandProducts(data))
+    },[])
+    const brandCars = brandProducts.filter(brandProduct => brandProduct.brand_name === brand.brandName)
+    console.log(brandCars);
+
     return (
         <div>
             <div className="bg-black"><Navbar></Navbar></div>
@@ -30,6 +41,12 @@ const BrandProducts = () => {
                         <a href="#slide1" className="btn btn-circle">❯</a>
                     </div>
                 </div>
+            </div>
+            <div>
+                {
+                    brandCars.map(brandCar => <BrandCarCards key={brandCar._id} brandCar={brandCar}></BrandCarCards>)
+                }
+
             </div>
         </div>
     );

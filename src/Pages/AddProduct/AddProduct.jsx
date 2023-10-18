@@ -1,4 +1,5 @@
 
+import Swal from 'sweetalert2';
 import Navbar from './../../Shared/Navbar/Navbar';
 
 const AddProduct = () => {
@@ -22,6 +23,25 @@ const AddProduct = () => {
             vehicle_type,
         }
         console.log(product);
+        fetch(`http://localhost:5000/brand`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(product)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Product Added Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+            }
+        })
     }
     return (
         <div>
