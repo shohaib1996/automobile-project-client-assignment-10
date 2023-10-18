@@ -8,7 +8,7 @@ import { Tooltip } from 'react-tooltip'
 import { Link } from 'react-router-dom';
 
 const BrandCarCards = ({ brandCar }) => {
-    const { product_name, img, brand_name, price, rating, vehicle_type, _id} = brandCar
+    const { product_name, img, brand_name, price, rating, vehicle_type, _id } = brandCar
     return (
         <div className="card bg-base-100 shadow-xl">
             <figure><img className='h-[279px] w-full' src={img} alt="Shoes" /></figure>
@@ -27,7 +27,9 @@ const BrandCarCards = ({ brandCar }) => {
                 </div>
 
                 <div className="card-actions justify-end mt-5">
-                    <button className="btn bg-green-400 text-white text-2xl font-bold " data-tooltip-id="my-tooltip" data-tooltip-content="Update Product!"><FaPen></FaPen></button>
+                    <Link to={`/update/${_id}`}>
+                        <button className="btn bg-green-400 text-white text-2xl font-bold " data-tooltip-id="my-tooltip" data-tooltip-content="Update Product!"><FaPen></FaPen></button>
+                    </Link>
                     <Tooltip id="my-tooltip" />
                     <Link to={`/product/${_id}`}>
                         <button className="btn bg-amber-600 text-white text-2xl font-bold" data-tooltip-id="my-tooltip" data-tooltip-content="Details!"><FaEye></FaEye></button>

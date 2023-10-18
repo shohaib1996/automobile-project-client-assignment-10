@@ -4,9 +4,46 @@ import { Link } from 'react-router-dom';
 import { FaCar, FaEye } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai'
 import { Tooltip } from 'react-tooltip';
+import Swal from 'sweetalert2';
 
-const CartCard = ({ cartCard }) => {
+const CartCard = ({ cartCard, cards, setCards }) => {
     const { product_name, img, brand_name, price, rating, vehicle_type, _id } = cartCard
+    const handleDelete = (_id) => {
+        console.log(_id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/cart/${_id}`, {
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            const remaining = cards.filter(card => card._id !== _id)
+                            setCards(remaining)
+                        }
+
+                    })
+
+            }
+        })
+    }
     return (
         <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md" >
             <div className="relative m-0 w-3/6 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
@@ -39,7 +76,7 @@ const CartCard = ({ cartCard }) => {
                         </Link>
 
                         <Tooltip id="my-tooltip" />
-                        <button className="btn bg-red-600 hover:bg-red-400 text-2xl font-bold text-white rounded-lg" data-tooltip-id="my-tooltip" data-tooltip-content="Delete Product!"><AiFillDelete></AiFillDelete></button>
+                        <button onClick={() => handleDelete(_id)} className="btn bg-red-600 hover:bg-red-400 text-2xl font-bold text-white rounded-lg" data-tooltip-id="my-tooltip" data-tooltip-content="Delete Product!"><AiFillDelete></AiFillDelete></button>
 
                     </div>
                 </a>
@@ -49,6 +86,8 @@ const CartCard = ({ cartCard }) => {
 };
 CartCard.propTypes = {
     cartCard: PropTypes.object,
+    cards: PropTypes.array,
+    setCards: PropTypes.func,
 }
 
 export default CartCard;
