@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { FaCar, FaDollarSign, FaPen, FaEye } from 'react-icons/fa';
-// import { AiFillDelete } from 'react-icons/ai'
 import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
