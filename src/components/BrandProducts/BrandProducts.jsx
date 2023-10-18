@@ -7,12 +7,12 @@ import BrandCarCards from "../BrandCarCards/BrandCarCards";
 const BrandProducts = () => {
     const brand = useLoaderData()
     const [brandProducts, setBrandProducts] = useState([])
-    console.log(brand);
-    useEffect(()=> {
+    // console.log(brand);
+    useEffect(() => {
         fetch(`http://localhost:5000/brand`)
-        .then(res => res.json())
-        .then(data => setBrandProducts(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setBrandProducts(data))
+    }, [])
     const brandCars = brandProducts.filter(brandProduct => brandProduct.brand_name === brand.brandName)
     console.log(brandCars);
 
@@ -43,11 +43,16 @@ const BrandProducts = () => {
                 </div>
             </div>
             <div>
-                {
-                    brandCars.map(brandCar => <BrandCarCards key={brandCar._id} brandCar={brandCar}></BrandCarCards>)
-                }
+                <h1 className="text-5xl font-bold text-center mt-12 mb-12">Our Products</h1>
+                <div className="max-w-5xl grid gap-8 grid-cols-1 lg:grid-cols-2 mx-auto mt-12 mb-12">
 
+                    {
+                        brandCars.map(brandCar => <BrandCarCards key={brandCar._id} brandCar={brandCar}></BrandCarCards>)
+                    }
+
+                </div>
             </div>
+
         </div>
     );
 };
