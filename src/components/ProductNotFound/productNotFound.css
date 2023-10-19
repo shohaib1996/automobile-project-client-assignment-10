@@ -1,0 +1,17 @@
+
+@keyframes spin-and-scale {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.20) rotate(180deg);
+    }
+    100% {
+      transform: scale(1) rotate(360deg);
+    }
+  }
+  
+  .hover\:spin-and-scale:hover {
+    animation: spin-and-scale 1s linear forwards;
+  }
+  

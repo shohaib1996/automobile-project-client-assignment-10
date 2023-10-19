@@ -1,15 +1,15 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Footer from "../Shared/Footer/Footer";
+import { Toaster } from "react-hot-toast";
+
 
 const Main = () => {
-    const location = useLocation();
-
-    const isBrandProducts = location.pathname === "/brands/652ec8a5df87b2ccf624e56c";
-
     return (
         <div>
+            <div><Toaster/></div>
             <Outlet></Outlet>
-            {isBrandProducts ? null : <Footer></Footer>}
+            <Footer></Footer>
+            
         </div>
     );
 };

@@ -9,6 +9,7 @@ import AddBrand from "../components/AddBrand/AddBrand";
 import BrandProducts from "../components/BrandProducts/BrandProducts";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
 import UpdateProduct from "../components/UpdateProduct/UpdateProduct";
+import Register from "../Pages/Login/Register";
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login></Login>
+            },
+            {
+                path: "/register",
+                element: <Register></Register>
             },
             {
                 path: "/brands",
