@@ -5,12 +5,14 @@ import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
 import Swal from "sweetalert2";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTheme } from "../../ThemeProvider/ThemeProvider";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 
 const ProductDetails = () => {
+    const {user} = useContext(AuthContext)
     
     
     const {isDarkTheme} = useTheme()
@@ -31,12 +33,13 @@ const ProductDetails = () => {
         const getCartCards = allCartCards || []
         const isExist = getCartCards.find(cartCard => cartCard._id === product._id)
         if (!isExist) {
+            const cartData = {...product, userId: user.uid}
             fetch(`http://localhost:5000/cart`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
                 },
-                body: JSON.stringify(product)
+                body: JSON.stringify(cartData)
             })
                 .then(res => res.json())
                 .then(data => {

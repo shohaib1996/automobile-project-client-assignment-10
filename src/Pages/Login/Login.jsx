@@ -34,7 +34,7 @@ const Login = () => {
         signInUser(email, password)
             .then(result => {
                 console.log(result.user)
-                console.log(result.user.uid);
+                // console.log(result.user.uid);
                 // const uid = result.user.uid
                 e.target.reset()
                 navigate(location?.state ? location.state : "/")
