@@ -2,9 +2,11 @@ import { useLoaderData } from "react-router-dom";
 import Navbar from "../../Shared/Navbar/Navbar";
 import CartCard from "../../components/CartCard/CartCard";
 import { useState } from "react";
+import { useTheme } from "../../ThemeProvider/ThemeProvider";
 
 
 const AddCart = () => {
+    const {isDarkTheme} = useTheme()
     
     const cartCards = useLoaderData()
     const [cards, setCards] = useState(cartCards)
@@ -12,7 +14,7 @@ const AddCart = () => {
      // console.log(cartCards);
      
     return (
-        <div>
+        <div className={`${isDarkTheme ? "bg-[#3f3f3f] text-white" : "bg-white "}`}>
             <div className="bg-bg-image"><Navbar></Navbar></div>
             <h1 className="text-5xl font-bold mt-12 text-center mb-12">Total Car: {cards.length}</h1>
             <div className="grid gap-5 grid-cols-1 lg:grid-cols-2 max-w-screen-xl mx-auto mb-12">
@@ -22,8 +24,8 @@ const AddCart = () => {
                     
                 }
             </div>
-            <div className="mt-6 flex items-center justify-center mb-12">
-                {cartCards.length > 4 && (
+            <div className="mt-6 flex items-center justify-center pb-12">
+                {cards.length > 4 && (
                     <button onClick={() => setIsShowAll(!isShowAll)} className={isShowAll ? 'hidden' : 'btn btn-secondary bg-yellow-400 text-white font-bold border-none'}>Show All</button>
                 )}
 

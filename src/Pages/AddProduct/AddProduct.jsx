@@ -1,8 +1,10 @@
 
 import Swal from 'sweetalert2';
 import Navbar from './../../Shared/Navbar/Navbar';
+import { useTheme } from '../../ThemeProvider/ThemeProvider';
 
 const AddProduct = () => {
+    const {isDarkTheme} = useTheme()
     const handleAddProduct = e => {
         e.preventDefault();
         const form = e.target;
@@ -44,16 +46,16 @@ const AddProduct = () => {
         })
     }
     return (
-        <div>
+        <div className={`${isDarkTheme ? "bg-[#3f3f3f] text-white" : "bg-white "}`}>
             <div className='bg-bg-image'><Navbar></Navbar></div>
-            <form onSubmit={handleAddProduct} className='max-w-screen-md mx-auto p-5 mt-20 mb-20'>
+            <form onSubmit={handleAddProduct} className='max-w-screen-md mx-auto p-5 mt-20 pb-20'>
                 <div className='mb-6 text-5xl  font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-amber-300 to-yellow-500 text-clip'>Add Your Product Here !!!</div>
                 <div className="relative z-0 w-full mb-6 group">
                     <input
                         type="text"
                         name="name"
                         id="floating_email"
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
+                        className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
                         placeholder=" "
                         required=""
                     />
@@ -69,7 +71,7 @@ const AddProduct = () => {
                         type="text"
                         name="photo"
                         id="floating_password"
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
+                        className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
                         placeholder=" "
                         required=""
                     />
@@ -85,7 +87,7 @@ const AddProduct = () => {
                         type="text"
                         name="brand"
                         id="floating_repeat_password"
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
+                        className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
                         placeholder=" "
                         required=""
                     />
@@ -101,7 +103,7 @@ const AddProduct = () => {
                         type="text"
                         name="description"
                         id="floating_repeat_password"
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
+                        className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
                         placeholder=" "
                         required=""
                     />
@@ -118,7 +120,7 @@ const AddProduct = () => {
                             type="text"
                             name="price"
                             id="floating_first_name"
-                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
+                            className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
                             placeholder=" "
                             required=""
                         />
@@ -134,7 +136,7 @@ const AddProduct = () => {
                             type="text"
                             name="rating"
                             id="floating_first_name"
-                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
+                            className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
                             placeholder=" "
                             required=""
                         />
@@ -149,15 +151,15 @@ const AddProduct = () => {
                         <select
                             name="vehicle_type"
                             id="vehicle_type"
-                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
+                            className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-yellow-400 peer"
                             required=""
                         >
                             <option value="" disabled selected hidden>Select a Vehicle Type</option>
-                            <option value="suv">SUV</option>
-                            <option value="sedan">Sedan</option>
-                            <option value="sports">Sports</option>
-                            <option value="minivan">Minivan</option>
-                            <option value="coupe">Coupe</option>
+                            <option className='text-black' value="suv">SUV</option>
+                            <option className='text-black' value="sedan">Sedan</option>
+                            <option className='text-black' value="sports">Sports</option>
+                            <option className='text-black' value="minivan">Minivan</option>
+                            <option className='text-black' value="coupe">Coupe</option>
                         </select>
                         <label
                             htmlFor="vehicle_type"

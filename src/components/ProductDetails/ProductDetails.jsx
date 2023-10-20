@@ -6,9 +6,14 @@ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
+import { useTheme } from "../../ThemeProvider/ThemeProvider";
+
 
 
 const ProductDetails = () => {
+    
+    
+    const {isDarkTheme} = useTheme()
     const product = useLoaderData()
     const [allCartCards, setAllCartCards] = useState([])
     // console.log(product);
@@ -20,6 +25,8 @@ const ProductDetails = () => {
     }, [allCartCards])
 
     const handleAddToCart = () => {
+        
+        
         // console.log(product);
         const getCartCards = allCartCards || []
         const isExist = getCartCards.find(cartCard => cartCard._id === product._id)
@@ -58,24 +65,21 @@ const ProductDetails = () => {
             )
         }
 
-
-
-
     }
 
     return (
-        <div>
+        <div className={`${isDarkTheme ? "bg-[#3f3f3f] text-white" : "bg-white "}`}>
             <div className="bg-bg-image"><Navbar></Navbar></div>
             <div>
-                <div className="max-w-screen-xl mx-auto mt-12 mb-12 p-3">
+                <div className="max-w-screen-xl mx-auto mt-12 pb-12 p-3">
                     <div className="flex items-center justify-between">
                         <div>
-                            <h1 className="text-3xl font-bold text-black mb-3">{product_name}</h1>
+                            <h1 className="text-3xl font-bold  mb-3">{product_name}</h1>
                             <p className="  text-2xl font-bold mb-5 rounded-md ">Brand Name: <span className="bg-yellow-400 px-2 py-1 text-white rounded-xl">{brand_name}</span></p>
 
                         </div>
                         <div>
-                            <p className="flex items-center relative"><span className="absolute bottom-6 right-32"><FaDollarSign></FaDollarSign></span><span className="text-5xl text-yellow-400 font-semibold">{price}</span></p>
+                            <p className="flex items-center relative"><span className="absolute bottom-6 right-36"><FaDollarSign></FaDollarSign></span><span className="text-5xl text-yellow-400 font-semibold">{price}</span></p>
                         </div>
 
                     </div>
@@ -93,7 +97,7 @@ const ProductDetails = () => {
                         </div>
 
                     </div>
-                    <h1 className="text-3xl font-bold text-black mb-4 mt-20">Product Description</h1>
+                    <h1 className="text-3xl font-bold  mb-4 mt-20">Product Description</h1>
                     <div className="flex items-center">
                         <div className="flex items-center">
                             <Rating style={{ maxWidth: 150 }} readOnly halfFillMode='svg' value={rating < 4.5 ? Math.floor(rating) : rating} />
@@ -106,7 +110,7 @@ const ProductDetails = () => {
                     </div>
 
 
-                    <p className="text-justify text-black mt-5">{short_desc}</p>
+                    <p className="text-justify  mt-5">{short_desc}</p>
                 </div>
             </div>
 

@@ -3,9 +3,12 @@ import Navbar from "../../Shared/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import BrandCarCards from "../BrandCarCards/BrandCarCards";
 import ProductNotFound from "../ProductNotFound/ProductNotFound";
+import { useTheme } from "../../ThemeProvider/ThemeProvider";
 
 
 const BrandProducts = () => {
+    const {isDarkTheme} = useTheme()
+    
     const brand = useLoaderData()
     const [brandProducts, setBrandProducts] = useState([])
     console.log(brand);
@@ -18,7 +21,7 @@ const BrandProducts = () => {
     console.log(brandCars);
 
     return (
-        <div>
+        <div className={`${isDarkTheme ? "bg-[#3f3f3f] text-white" : "bg-white "}`}>
             <div className="bg-bg-image"><Navbar></Navbar></div>
             <div className="carousel w-full h-[85vh]">
                 <div id="slide1" className="carousel-item relative w-full ">
@@ -51,7 +54,7 @@ const BrandProducts = () => {
 
                     {
                         brandCars.length === 0 ? <ProductNotFound></ProductNotFound> : 
-                        <div className="max-w-5xl grid gap-8 grid-cols-1 lg:grid-cols-2 mx-auto mt-12 mb-12">
+                        <div className="max-w-5xl grid gap-8 grid-cols-1 lg:grid-cols-2 mx-auto mt-12 pb-12 text-black">
                             {
                                 brandCars.map(brandCar => <BrandCarCards key={brandCar._id} brandCar={brandCar}></BrandCarCards>)
                             }
