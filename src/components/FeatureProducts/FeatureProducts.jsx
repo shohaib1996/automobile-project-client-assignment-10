@@ -7,7 +7,7 @@ const FeatureProducts = () => {
     const [isDataFetched, setIsDataFetched] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/brand')
+        fetch('https://automobile-project-server-m8p4aqcrp-shohaib-hossains-projects.vercel.app/brand')
             .then(res => res.json())
             .then(data => {
                 setGallery(data);
@@ -28,10 +28,14 @@ const FeatureProducts = () => {
     }, [featureProducts, isDataFetched]);
 
     return (
-        <div className="rounded-box max-w-6xl mx-auto">
-            <div className=" space-x-4 flex items-center justify-center">
+        <div className="rounded-box p-3 lg:p-0 max-w-6xl mx-auto">
+            <div className="space-x-4 flex items-center justify-center">
                 {featureProducts.map((card, index) => (
-                    <FeatureProductCard key={card._id} card={card} isActive={index >= currentIndex && index < currentIndex + 3} />
+                    <FeatureProductCard
+                        key={card._id}
+                        card={card}
+                        isActive={index >= currentIndex && index < currentIndex + (window.innerWidth >= 1024 ? 3 : 1)}
+                    />
                 ))}
             </div>
         </div>
@@ -39,5 +43,7 @@ const FeatureProducts = () => {
 };
 
 export default FeatureProducts;
+
+
 
 

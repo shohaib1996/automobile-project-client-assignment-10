@@ -13,7 +13,7 @@ const BrandProducts = () => {
     const [brandProducts, setBrandProducts] = useState([])
     console.log(brand);
     useEffect(() => {
-        fetch(`http://localhost:5000/brand`)
+        fetch(`https://automobile-project-server-m8p4aqcrp-shohaib-hossains-projects.vercel.app/brand`)
             .then(res => res.json())
             .then(data => setBrandProducts(data))
     }, [])
@@ -54,7 +54,7 @@ const BrandProducts = () => {
 
                     {
                         brandCars.length === 0 ? <ProductNotFound></ProductNotFound> : 
-                        <div className="max-w-5xl grid gap-8 grid-cols-1 lg:grid-cols-2 mx-auto mt-12 pb-12 text-black">
+                        <div className="p-2 lg:p-0 max-w-5xl grid gap-8 grid-cols-1 lg:grid-cols-2 mx-auto mt-12 pb-12 text-black">
                             {
                                 brandCars.map(brandCar => <BrandCarCards key={brandCar._id} brandCar={brandCar}></BrandCarCards>)
                             }

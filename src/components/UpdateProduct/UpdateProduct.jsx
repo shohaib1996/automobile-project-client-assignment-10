@@ -28,7 +28,7 @@ const UpdateProduct = () => {
             vehicle_type,
         }
         console.log(updateProduct);
-        fetch(`http://localhost:5000/brand/${_id}`, {
+        fetch(`https://automobile-project-server-m8p4aqcrp-shohaib-hossains-projects.vercel.app/brand/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
@@ -44,7 +44,9 @@ const UpdateProduct = () => {
                         text: 'Product Updated Successfully',
                         icon: 'success',
                         confirmButtonText: 'Cool'
-                    })
+                    }).then(() => {
+                        window.history.back();
+                    });
                 }
             })
     }

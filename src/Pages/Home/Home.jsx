@@ -25,9 +25,9 @@ const Home = () => {
                     <h1 className="text-5xl text-center mb-12 font-bold">Feature Products</h1>
                     <FeatureProducts></FeatureProducts>
                 </div>
-                <div className="">
+                <div id="card" className="">
                     <h1 className="text-5xl text-center mt-12 font-bold">Brands</h1>
-                    <div className=" max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mt-20 text-black">
+                    <div className="p-2 lg:p-0 max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mt-20 text-black">
                         {
                             brands.map(brand => <BrandCard key={brand._id} brand={brand}></BrandCard>)
 

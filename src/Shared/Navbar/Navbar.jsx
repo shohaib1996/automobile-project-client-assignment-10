@@ -38,7 +38,7 @@ const Navbar = () => {
 
         <li>
             <NavLink
-                to="/cart"
+                to={`/cart`}
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-yellow-400 font-bold" : ""
                 }
@@ -73,7 +73,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="flex items-center">
-                        <a className="btn btn-ghost normal-case text-xl"><img className="h-14 w-36" src="/images/auto_care_logo.png" alt="" /></a>
+                        <a className="btn hidden lg:flex btn-ghost normal-case text-xl"><img className="h-14 w-36" src="/images/auto_care_logo.png" alt="" /></a>
                         <div className="mt-5">
                             <ReactSwitch checked={isDarkTheme}
                                 onChange={toggleTheme}></ReactSwitch>
@@ -90,8 +90,8 @@ const Navbar = () => {
                 {
                     user ?
                         <div className="navbar-end space-x-3">
-                            <p className="font-bold uppercase  bg-yellow-300 p-2 rounded-lg">{user.displayName || user.email}</p>
-                            <img className="w-12 h-12 rounded-full hidden lg:flex" src={user.photoURL} alt="" />
+                            <p className="font-bold uppercase  bg-yellow-300 p-2 rounded-lg">{user?.displayName || user?.email}</p>
+                            <img className="w-12 h-12 rounded-full hidden lg:flex" src={user?.photoURL} alt="" />
                             <button onClick={handleLogOut} className="btn hover:bg-yellow-400 hover:border-none bg-transparent border-2 border-yellow-400 text-white">Log Out</button>
                         </div> :
                         <div className="navbar-end">

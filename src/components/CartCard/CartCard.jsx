@@ -20,7 +20,7 @@ const CartCard = ({ cartCard, cards, setCards }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/cart/${_id}`, {
+                fetch(`https://automobile-project-server-m8p4aqcrp-shohaib-hossains-projects.vercel.app/cart/${_id}`, {
                     method: "DELETE",
                     headers: {
                         'Content-Type': 'application/json'
@@ -45,8 +45,8 @@ const CartCard = ({ cartCard, cards, setCards }) => {
         })
     }
     return (
-        <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md" >
-            <div className="relative m-0 w-3/6 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
+        <div className="p-2 lg:p-0 relative flex flex-col  w-full max-w-[48rem] lg:flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md" >
+            <div className="relative m-0 lg:w-3/6 w-full shrink-0 overflow-hidden rounded-xl lg:rounded-r-none bg-white bg-clip-border text-gray-700">
                 <img
                     src={img}
                     alt="image"

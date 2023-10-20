@@ -20,8 +20,9 @@ const ProductDetails = () => {
     const [allCartCards, setAllCartCards] = useState([])
     // console.log(product);
     const { product_name, img, brand_name, short_desc, price, rating, vehicle_type, } = product;
+    // const dataSend = {product_name, img, brand_name, short_desc, price, rating, vehicle_type}
     useEffect(() => {
-        fetch(`http://localhost:5000/cart`)
+        fetch(`https://automobile-project-server-m8p4aqcrp-shohaib-hossains-projects.vercel.app/cart`)
             .then(res => res.json())
             .then(data => setAllCartCards(data))
     }, [allCartCards])
@@ -33,8 +34,8 @@ const ProductDetails = () => {
         const getCartCards = allCartCards || []
         const isExist = getCartCards.find(cartCard => cartCard._id === product._id)
         if (!isExist) {
-            const cartData = {...product, userId: user.uid}
-            fetch(`http://localhost:5000/cart`, {
+            const cartData = {...product, email: user.email}
+            fetch(`https://automobile-project-server-m8p4aqcrp-shohaib-hossains-projects.vercel.app/cart`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
@@ -75,7 +76,7 @@ const ProductDetails = () => {
             <div className="bg-bg-image"><Navbar></Navbar></div>
             <div>
                 <div className="max-w-screen-xl mx-auto mt-12 pb-12 p-3">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col lg:flex-row items-center justify-between">
                         <div>
                             <h1 className="text-3xl font-bold  mb-3">{product_name}</h1>
                             <p className="  text-2xl font-bold mb-5 rounded-md ">Brand Name: <span className="bg-yellow-400 px-2 py-1 text-white rounded-xl">{brand_name}</span></p>

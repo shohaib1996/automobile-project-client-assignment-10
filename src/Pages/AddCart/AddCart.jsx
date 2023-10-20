@@ -1,17 +1,22 @@
 import { useLoaderData } from "react-router-dom";
 import Navbar from "../../Shared/Navbar/Navbar";
 import CartCard from "../../components/CartCard/CartCard";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useTheme } from "../../ThemeProvider/ThemeProvider";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const AddCart = () => {
+    const {user} = useContext(AuthContext)
     const {isDarkTheme} = useTheme()
     
     const cartCards = useLoaderData()
-    const [cards, setCards] = useState(cartCards)
+    const cartList = cartCards.filter(cart => cart.email === user.email)
+    const [cards, setCards] = useState(cartList)
     const [isShowAll, setIsShowAll] = useState(false)   
-     // console.log(cartCards);
+     console.log(cartCards);
+
+    
      
     return (
         <div className={`${isDarkTheme ? "bg-[#3f3f3f] text-white" : "bg-white "}`}>
