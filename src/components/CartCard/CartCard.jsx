@@ -20,7 +20,7 @@ const CartCard = ({ cartCard, cards, setCards }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://automobile-project-server-m8p4aqcrp-shohaib-hossains-projects.vercel.app/cart/${_id}`, {
+                fetch(`https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/cart/${_id}`, {
                     method: "DELETE",
                     headers: {
                         'Content-Type': 'application/json'

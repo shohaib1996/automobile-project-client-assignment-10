@@ -7,7 +7,7 @@ const FeatureProducts = () => {
     const [isDataFetched, setIsDataFetched] = useState(false);
 
     useEffect(() => {
-        fetch('https://automobile-project-server-m8p4aqcrp-shohaib-hossains-projects.vercel.app/brand')
+        fetch('https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/brand')
             .then(res => res.json())
             .then(data => {
                 setGallery(data);

@@ -10,7 +10,7 @@ const AddBrand = () => {
         const photo = form.photo.value;
         const brand = { brandName, photo }
         console.log(brand);
-        fetch(`https://automobile-project-server-m8p4aqcrp-shohaib-hossains-projects.vercel.app/brands`, {
+        fetch(`https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/brands`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"

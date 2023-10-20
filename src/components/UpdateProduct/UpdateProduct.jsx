@@ -28,7 +28,7 @@ const UpdateProduct = () => {
             vehicle_type,
         }
         console.log(updateProduct);
-        fetch(`https://automobile-project-server-m8p4aqcrp-shohaib-hossains-projects.vercel.app/brand/${_id}`, {
+        fetch(`https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/brand/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
