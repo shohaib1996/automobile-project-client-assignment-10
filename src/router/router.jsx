@@ -23,7 +23,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: ()=> fetch(`https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/brands`)
+                loader: ()=> fetch(`https://automobile-project-server.vercel.app/brands`)
             },
             {
                 path: "/addProduct",
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <PrivateRoute><AddCart></AddCart></PrivateRoute>,
-                loader: ()=> fetch(`https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/cart`)
+                loader: ()=> fetch(`https://automobile-project-server.vercel.app/cart`)
             },
             {
                 path: "/login",
@@ -49,17 +49,17 @@ const router = createBrowserRouter([
             {
                 path: "/brands/:id",
                 element: <BrandProducts></BrandProducts>,
-                loader: ({params})=> fetch(`https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/brands/${params.id}`),
+                loader: ({params})=> fetch(`https://automobile-project-server.vercel.app/brands/${params.id}`),
             },
             {
                 path: "/product/:id",
                 element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/brand/${params.id}`)
+                loader: ({params}) => fetch(`https://automobile-project-server.vercel.app/brand/${params.id}`)
             },
             {
                 path: "/update/:id",
                 element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-                loader: ({params}) => fetch(`https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/brand/${params.id}`)
+                loader: ({params}) => fetch(`https://automobile-project-server.vercel.app/brand/${params.id}`)
 
             }
         ]

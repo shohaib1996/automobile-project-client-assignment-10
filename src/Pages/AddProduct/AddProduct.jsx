@@ -25,7 +25,7 @@ const AddProduct = () => {
             vehicle_type,
         }
         console.log(product);
-        fetch(`https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/brand`, {
+        fetch(`https://automobile-project-server.vercel.app/brand`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"

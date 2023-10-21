@@ -13,7 +13,7 @@ const BrandProducts = () => {
     const [brandProducts, setBrandProducts] = useState([])
     console.log(brand);
     useEffect(() => {
-        fetch(`https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/brand`)
+        fetch(`https://automobile-project-server.vercel.app/brand`)
             .then(res => res.json())
             .then(data => setBrandProducts(data))
     }, [])

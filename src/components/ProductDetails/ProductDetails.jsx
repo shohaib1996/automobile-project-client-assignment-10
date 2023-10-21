@@ -22,7 +22,7 @@ const ProductDetails = () => {
     const { product_name, img, brand_name, short_desc, price, rating, vehicle_type, } = product;
     const dataSend = {product_name, img, brand_name, short_desc, price, rating, vehicle_type}
     useEffect(() => {
-        fetch(`https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/cart`)
+        fetch(`https://automobile-project-server.vercel.app/cart`)
             .then(res => res.json())
             .then(data => setAllCartCards(data))
     }, [allCartCards])
@@ -35,7 +35,7 @@ const ProductDetails = () => {
         const isExist = getCartCards.find(cartCard => cartCard._id === product._id)
         if (!isExist) {
             const cartData = {...dataSend, email: user?.email}
-            fetch(`https://automobile-project-server-dxo4khxh9-shohaib-hossains-projects.vercel.app/cart`, {
+            fetch(`https://automobile-project-server.vercel.app/cart`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
