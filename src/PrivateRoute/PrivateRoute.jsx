@@ -11,7 +11,7 @@ import { ColorRing } from "react-loader-spinner";
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const location = useLocation()
-    console.log(location);
+    // console.log(location);
     if (loading) {
         return (
             <div className="flex justify-center items-center mt-20 mb-72">

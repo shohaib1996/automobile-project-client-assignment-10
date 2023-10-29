@@ -19,23 +19,24 @@ const ProductDetails = () => {
     const product = useLoaderData()
     const [allCartCards, setAllCartCards] = useState([])
     // console.log(product);
-    const { product_name, img, brand_name, short_desc, price, rating, vehicle_type, } = product;
-    const dataSend = {product_name, img, brand_name, short_desc, price, rating, vehicle_type}
+    const { product_name, img, brand_name, short_desc, price, rating, vehicle_type, _id } = product;
+    const dataSend = {product_name, img, brand_name, short_desc, price, rating, vehicle_type, currentId : _id}
     useEffect(() => {
-        fetch(`https://automobile-project-server.vercel.app/cart`)
+        fetch(`http://localhost:5000/cart?email=${user?.email || user?.uid}`)
             .then(res => res.json())
             .then(data => setAllCartCards(data))
-    }, [allCartCards])
+    }, [user?.email , user?.uid, allCartCards])
+    // console.log(allCartCards);
 
     const handleAddToCart = () => {
         
         
         // console.log(product);
-        const getCartCards = allCartCards || []
-        const isExist = getCartCards.find(cartCard => cartCard._id === product._id)
+        
+        const isExist = allCartCards.find(cartCard => cartCard.currentId === product._id)
         if (!isExist) {
-            const cartData = {...dataSend, email: user?.email}
-            fetch(`https://automobile-project-server.vercel.app/cart`, {
+            const cartData = {...dataSend, email: user?.email || user?.uid}
+            fetch(`http://localhost:5000/cart`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"

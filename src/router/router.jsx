@@ -11,10 +11,14 @@ import ProductDetails from "../components/ProductDetails/ProductDetails";
 import UpdateProduct from "../components/UpdateProduct/UpdateProduct";
 import Register from "../Pages/Login/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+
 // import { ThemeProvider } from "../ThemeProvider/ThemeProvider";
 
 
-const router = createBrowserRouter([
+
+
+const router = createBrowserRouter([  
+    
     {
         path: "/",
         element: <Main></Main>,
@@ -23,7 +27,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: ()=> fetch(`https://automobile-project-server.vercel.app/brands`)
+                loader: ()=> fetch(`http://localhost:5000/brands`)
             },
             {
                 path: "/addProduct",
@@ -32,7 +36,6 @@ const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <PrivateRoute><AddCart></AddCart></PrivateRoute>,
-                loader: ()=> fetch(`https://automobile-project-server.vercel.app/cart`)
             },
             {
                 path: "/login",
@@ -49,17 +52,17 @@ const router = createBrowserRouter([
             {
                 path: "/brands/:id",
                 element: <BrandProducts></BrandProducts>,
-                loader: ({params})=> fetch(`https://automobile-project-server.vercel.app/brands/${params.id}`),
+                loader: ({params})=> fetch(`http://localhost:5000/brands/${params.id}`),
             },
             {
                 path: "/product/:id",
                 element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`https://automobile-project-server.vercel.app/brand/${params.id}`)
+                loader: ({params}) => fetch(`http://localhost:5000/brand/${params.id}`)
             },
             {
                 path: "/update/:id",
                 element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-                loader: ({params}) => fetch(`https://automobile-project-server.vercel.app/brand/${params.id}`)
+                loader: ({params}) => fetch(`http://localhost:5000/brand/${params.id}`)
 
             }
         ]

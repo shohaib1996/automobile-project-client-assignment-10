@@ -7,7 +7,8 @@ import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
 
 const CartCard = ({ cartCard, cards, setCards }) => {
-    const { product_name, img, brand_name, price, rating, vehicle_type, _id } = cartCard
+    const { product_name, img, brand_name, price, rating, vehicle_type, _id, currentId } = cartCard
+    console.log(cartCard);
     const handleDelete = (_id) => {
         console.log(_id);
         Swal.fire({
@@ -20,7 +21,7 @@ const CartCard = ({ cartCard, cards, setCards }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://automobile-project-server.vercel.app/cart/${_id}`, {
+                fetch(`http://localhost:5000/cart/${_id}`, {
                     method: "DELETE",
                     headers: {
                         'Content-Type': 'application/json'
@@ -71,7 +72,7 @@ const CartCard = ({ cartCard, cards, setCards }) => {
 
                 <a className="inline-block">
                     <div className=" space-x-5 mt-4">
-                        <Link to={`/product/${_id}`}>
+                        <Link to={`/product/${currentId}`}>
                             <button className="btn bg-green-600 hover:bg-green-400 text-2xl font-bold text-white rounded-lg" data-tooltip-id="my-tooltip" data-tooltip-content="Product Details!"><FaEye></FaEye></button>
                         </Link>
 

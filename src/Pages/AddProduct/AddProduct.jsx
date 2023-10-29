@@ -25,7 +25,7 @@ const AddProduct = () => {
             vehicle_type,
         }
         console.log(product);
-        fetch(`https://automobile-project-server.vercel.app/brand`, {
+        fetch(`http://localhost:5000/brand`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"

@@ -28,7 +28,7 @@ const UpdateProduct = () => {
             vehicle_type,
         }
         console.log(updateProduct);
-        fetch(`https://automobile-project-server.vercel.app/brand/${_id}`, {
+        fetch(`http://localhost:5000/brand/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

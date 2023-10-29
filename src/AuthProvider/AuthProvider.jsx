@@ -6,8 +6,11 @@ import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPasswor
 
 
 export const AuthContext = createContext(null)
-const googleProvider = new GoogleAuthProvider()
+const googleProvider = new GoogleAuthProvider();
+googleProvider.addScope('email');
+
 const facebookProvider = new FacebookAuthProvider()
+
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)

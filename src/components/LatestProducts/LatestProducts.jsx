@@ -6,7 +6,7 @@ const LatestProducts = () => {
 
 
     useEffect(() => {
-        fetch('https://automobile-project-server.vercel.app/brand')
+        fetch('http://localhost:5000/brand')
             .then(res => res.json())
             .then(data => {
                 setGallery(data);
