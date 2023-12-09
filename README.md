@@ -12,3 +12,7 @@ Car management system
 - Empowers users with detailed product information, facilitating well-informed purchasing choices.
 - Ensures data privacy by controlling access to specific routes, reinforcing the application's security.
 - A user-friendly and visually appealing navigation menu with a dropdown feature, ensuring a seamless user experience.
+
+## Screenshots
+
+![App Screenshot](https://i.imgur.com/edSLjHX.png)
